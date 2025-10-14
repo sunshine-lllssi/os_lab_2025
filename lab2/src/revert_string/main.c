@@ -4,21 +4,14 @@
 
 #include "revert_string.h"
 
-int main(int argc, char *argv[])
-{
-	if (argc != 2)
-	{
-		printf("Usage: %s string_to_revert\n", argv[0]);
-		return -1;
-	}
-
-	char *reverted_str = malloc(sizeof(char) * (strlen(argv[1]) + 1));
-	strcpy(reverted_str, argv[1]);
-
-	RevertString(reverted_str);
-
-	printf("Reverted: %s\n", reverted_str);
-	free(reverted_str);
-	return 0;
+int main() {
+    char test1[] = "a";
+    char test2[] = "ab";
+    char test3[] = "abcd";
+    char test4[] = "";
+    RevertString(test1); printf("%s\n", test1); // a
+    RevertString(test2); printf("%s\n", test2); // ba
+    RevertString(test3); printf("%s\n", test3); // cba
+    RevertString(test4); printf("%s\n", test4); // (пусто)
+    return 0;
 }
-
