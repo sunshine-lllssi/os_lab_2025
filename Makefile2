@@ -1,0 +1,21 @@
+
+CC = gcc #переменная определяющая компилятор
+CFLAGS = -Wall -g -std=c99 #Включает максимальное количество диагностических #предупреждений + информация отладчика + стандар С
+TARGETS = psum # имена целевых программ
+# пути
+PARALLEL_SUM_SRC = lab4/src/parallel_sum.c
+SUM_LIB_SRC = lab4/src/sum_lib.c
+UTILS_SRC = lab3/src/utils.c
+
+# сборка всех
+all: $(TARGETS)
+
+#сборка parallel_sum с библиотекой суммирования и utils
+psum: $(PARALLEL_SUM_SRC) $(SUM_LIB_SRC) $(UTILS_SRC)
+	$(CC) $(CFLAGS) -o $@ $^ -lpthread
+
+# очистка собранных файлов
+clean:
+	rm -f $(TARGETS)
+
+.PHONY: all clean
